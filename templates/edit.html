@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Edit {{ model_name }} item</h2>
+    <form method="post" action="/model/{{ model_name }}/edit/{{ id }}">
+        {% for field in fields %}
+            <label for="{{ field }}">{{ field }}</label>
+            <input type="text" id="{{ field }}" name="{{ field }}" value="{% if values and field in values %}{{ values[field] }}{% endif %}"><br>
+        {% endfor %}
+        <input type="hidden" id="id" name="id" value="{{ id }}">
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

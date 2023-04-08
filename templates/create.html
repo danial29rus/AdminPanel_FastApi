@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Create a new item</h1>
+  <form id="create-form" method="post" action="/model/Item/create">
+    {% for field in fields %}
+      {% if field != 'id' %}
+        <div>
+          <label for="{{ field }}">{{ field.capitalize() }}</label>
+          {% if field == 'user_id' %}
+            <input type="number" name="{{ field }}" id="{{ field }}" step="1">
+          {% else %}
+            <input type="text" name="{{ field }}" id="{{ field }}">
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+    <button type="submit" form="create-form">Create</button>
+  </form>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    function submitForm() {
+      const form = document.getElementById('create-form');
+      const formData = new FormData(form);
+      const jsonData = JSON.stringify(Object.fromEntries(formData));
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/model/{{ model_name }}/create');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.responseText);
+        }
+      };
+      xhr.send(jsonData);
+    }
+
+    document.getElementById('create-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      submitForm();
+    });
+  </script>
+{% endblock %}

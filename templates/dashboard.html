@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+    <p>Number of users: {{ user_count }}</p>
+    <p>Number of items: {{ item_count }}</p>
+
+    <h2>Models:</h2>
+    <ul>
+        <li><a href="/model/users">users</a></li>
+        <li><a href="/model/Item">Item</a></li>
+    </ul>
+{% endblock %}

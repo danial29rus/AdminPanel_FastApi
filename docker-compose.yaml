@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:13.3
+    container_name: admin_bd
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+
+
+  adminpanel:
+    env_file: .env-non-dev
+    build:
+      context: .
+    command: bash -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+    container_name: admin_app
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/postgres
+
+
