@@ -9,7 +9,11 @@
 
 Существующие страницы:
 http://localhost:8000/dashboard
+
 http://localhost:8000/register
+
 http://localhost:8000/login
+
 http://localhost:8000/model/users
+
 http://localhost:8000/model/Item
