@@ -17,3 +17,10 @@ http://localhost:8000/login
 http://localhost:8000/model/users
 
 http://localhost:8000/model/Item
+
+
+# Чтобы поднять приложение 
+git clone https://github.com/danial29rus/AdminPanel_FastApi.git
+
+docker-compose up --build или docker-compose up -d --build
+
