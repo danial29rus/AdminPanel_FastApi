@@ -24,3 +24,8 @@ git clone https://github.com/danial29rus/AdminPanel_FastApi.git
 
 docker-compose up --build или docker-compose up -d --build
 
+
+
+<img width="1258" alt="image" src="https://user-images.githubusercontent.com/70702619/230859609-ea9e0acd-b9d0-43c3-a729-c414c1f4bea7.png">
+
+
